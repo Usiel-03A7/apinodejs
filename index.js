@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 app.get('/send', (req, res) => {
   pusher.trigger("my-channel", "my-event", {
-    message: "hello world"
+    message: "Añadiste nueva tarea"
   });
   res.send('sent');
 })
