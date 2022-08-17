@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 80
 const Pusher = require("pusher");
 
 const pusher = new Pusher({
@@ -11,8 +11,11 @@ const pusher = new Pusher({
   useTLS: true
 });
 
-
 app.get('/', (req, res) => {
+  res.send('Express server is running');
+})
+
+app.get('/send', (req, res) => {
   pusher.trigger("my-channel", "my-event", {
     message: "hello world"
   });
